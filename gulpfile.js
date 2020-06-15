@@ -6,6 +6,7 @@ const browsersync = require("browser-sync");
 
 const dist = "./dist/";
 
+
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
                 .pipe(gulp.dest(dist))
@@ -62,7 +63,9 @@ gulp.task("watch", () => {
     gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task("build", () => {
+   gulp.parallel("copy-html", "copy-assets", "build-js") 
+  });
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")
